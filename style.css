@@ -127,9 +127,9 @@ body {
 .reveal-img {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 150%;
   background: rgb(34, 34, 34);
-  top: 0;
+  top: -15%;
   left: 0;
 }
 .cursor {
@@ -138,4 +138,7 @@ body {
   border: 2px solid white;
   border-radius: 50%;
   position: absolute;
+}
+.scrollmagic-pin-spacer{
+  position: static !important;
 }
