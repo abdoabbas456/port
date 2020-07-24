@@ -37,7 +37,7 @@ function animation() {
     let netxslides = sliders.length - 1 === index ? "end" : sliders[index + 1];
     pagetl.fromTo(netxslides, { y: "0%" }, { y: "50%" });
     pagetl.fromTo(slide, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0 });
-    pagetl.fromTo(netxslides, { y: "50%" }, { y: "0%" },"-=0.5");
+    pagetl.fromTo(netxslides, { y: "50%" }, { y: "0%" }, "-=0.5");
 
     pagescene = new ScrollMagic.Scene({
       triggerElement: slide,
@@ -56,4 +56,30 @@ function animation() {
       .addTo(controls);
   });
 }
+let mouse = document.querySelector(".cursor");
+let mouseTxt = mouse.querySelector("span");
+function cursor(e) {
+  mouse.style.top = e.pageY + "px";
+  mouse.style.left = e.pageX + "px";
+}
+function cursoractive(e) {
+  const item = e.target;
+  if (item.id === "logo" || item.classList.contains("burger")) {
+    mouse.classList.add("nav-active");
+  } else {
+    mouse.classList.remove("nav-active");
+  }
+  if (item.classList.contains("explore")) {
+    mouse.classList.add("explore-active");
+    gsap.to(".title-swipe", 1, { y: "0%" });
+    mouseTxt.innerText = "Tap";
+    mo;
+  } else {
+    mouse.classList.remove("explore-active");
+    gsap.to(".title-swipe", 1, { y: "100%" });
+    mouseTxt.innerText = "";
+  }
+}
+window.addEventListener("mousemove", cursor);
+window.addEventListener("mouseover", cursoractive);
 animation();
